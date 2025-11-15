@@ -1,0 +1,172 @@
+.app {
+  width: min(520px, 100%);
+  margin: 0 auto;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 25px 45px rgba(15, 23, 42, 0.08);
+}
+
+.app.auth {
+  max-width: 420px;
+  text-align: center;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.9rem;
+  color: #111827;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.todo-form {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.todo-form input {
+  flex: 1;
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  padding: 0.85rem 1.1rem;
+  font-size: 1rem;
+}
+
+.todo-form button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.85rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  background: #2563eb;
+  color: #fff;
+}
+
+.logout-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.45rem 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #f3f4f6;
+  color: #111827;
+}
+
+.todo-list {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+.todo-item label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.todo-item input[type='checkbox'] {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.todo-item span {
+  flex: 1;
+  word-break: break-word;
+}
+
+.todo-item.done span {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.todo-item button {
+  border: none;
+  background: transparent;
+  color: #ef4444;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.empty-state {
+  margin-top: 1.25rem;
+  text-align: center;
+  color: #6b7280;
+}
+
+.status {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #dc2626;
+}
+
+.status.success {
+  color: #16a34a;
+}
+
+.footer-hint {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.auth-form input {
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+}
+
+.auth-form button {
+  border: none;
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  background: #2563eb;
+  color: #fff;
+}
+
+.auth-toggle {
+  margin-top: 1rem;
+  border: none;
+  background: transparent;
+  color: #2563eb;
+  font-weight: 600;
+  cursor: pointer;
+}
