@@ -126,9 +126,23 @@ async def get_current_user(token: str = Depends(oauth2_scheme)) -> UserInDB:
 # --- Auth endpoints ----------------------------------------------------------
 
 
+def _ensure_valid_username(raw_username: str) -> str:
+    username = raw_username.strip()
+    if len(username) < 3:
+        raise HTTPException(status_code=400, detail="아이디는 최소 3자 이상이어야 합니다.")
+    return username
+
+
+def _normalize_todo_text(raw_text: str) -> str:
+    text = raw_text.strip()
+    if not text:
+        raise HTTPException(status_code=400, detail="할 일을 입력해주세요.")
+    return text
+
+
 @app.post("/auth/register", response_model=User, status_code=201)
 def register(payload: AuthPayload) -> User:
-    username = payload.username.strip()
+    username = _ensure_valid_username(payload.username)
     if username in _users:
         raise HTTPException(status_code=400, detail="이미 존재하는 사용자입니다.")
     hashed_password = get_password_hash(payload.password)
@@ -172,7 +186,7 @@ def list_todos(current_user: UserInDB = Depends(get_current_user)) -> List[Todo]
 
 @app.post("/todos", response_model=Todo, status_code=201)
 def create_todo(payload: TodoCreate, current_user: UserInDB = Depends(get_current_user)) -> Todo:
-    todo = Todo(id=str(uuid4()), text=payload.text.strip(), done=False)
+    todo = Todo(id=str(uuid4()), text=_normalize_todo_text(payload.text), done=False)
     todos = _get_user_todos(current_user.username)
     todos.insert(0, todo)
     return todo
@@ -186,7 +200,7 @@ def update_todo(
 ) -> Todo:
     todo = get_todo(todo_id, current_user.username)
     if payload.text is not None:
-        todo.text = payload.text.strip()
+        todo.text = _normalize_todo_text(payload.text)
     if payload.done is not None:
         todo.done = payload.done
     return todo

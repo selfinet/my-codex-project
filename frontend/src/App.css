@@ -170,3 +170,33 @@ header h1 {
   font-weight: 600;
   cursor: pointer;
 }
+
+.language-switch {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.language-switch span {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.language-switch button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.25rem 0.8rem;
+  font-weight: 600;
+  background: #e5e7eb;
+  color: #374151;
+  cursor: pointer;
+}
+
+.language-switch button.active,
+.language-switch button:disabled {
+  background: #2563eb;
+  color: #ffffff;
+  cursor: default;
+}
